@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479678333573",
+    "project_id": "fir-otpkotlin-745c2",
+    "storage_bucket": "fir-otpkotlin-745c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479678333573:android:b9e2bbc3dc8879501bdfec",
+        "android_client_info": {
+          "package_name": "com.c.firbaseotpkotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479678333573-isnvvoqq6s4qga6isiq3p4a7reik1l67.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYcKWR8sodc9zK-4z918rvs5hy1krMO-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479678333573-isnvvoqq6s4qga6isiq3p4a7reik1l67.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

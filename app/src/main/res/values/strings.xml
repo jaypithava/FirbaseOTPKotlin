@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FirbaseOTPKotlin</string>
+    <string name="otp_resend">Didn\'t get OTP? <b>Resend</b> </string>
+</resources>
