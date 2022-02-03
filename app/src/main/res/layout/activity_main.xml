@@ -54,7 +54,7 @@
             android:padding="10dp"
             android:textAlignment="center"
             android:textColor="#000"
-            android:textColorHint="c5c5c5c"/>
+            android:textColorHint="@color/purple_200"/>
 
         <Button
             android:id="@+id/phoneContinueBtn"
@@ -105,7 +105,7 @@
             android:padding="10dp"
             android:textAlignment="center"
             android:textColor="#000"
-            android:textColorHint="c5c5c5c"/>
+            android:textColorHint="@color/purple_200"/>
 
         <TextView
             android:id="@+id/resendCodeTv"
