@@ -8,13 +8,11 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.c.firbaseotpkotlin.databinding.ActivityMainBinding
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +34,10 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val animationFadeIn = AnimationUtils.loadAnimation(this@MainActivity, R.anim.bounce)
+        binding.phoneLl.startAnimation(animationFadeIn)
+        binding.iconIv.startAnimation(animationFadeIn)
+        
         binding.phoneLl.visibility= View.VISIBLE
         binding.codeLl.visibility= View.GONE
 
@@ -47,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         mCallBacks=object :PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                signInWithPhoneAuthCredentials(phoneAuthCredential)
+                signInWithPhoneAuthCredential(phoneAuthCredential)
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
@@ -63,16 +65,17 @@ class MainActivity : AppCompatActivity() {
                 progressProgressDialog.dismiss()
 
                 Log.d(TAG, "onCodeSent: $VerificationId")
-
+                val animationFadeIn = AnimationUtils.loadAnimation(this@MainActivity, R.anim.slide_down)
+                binding.codeLl.startAnimation(animationFadeIn)
                 binding.phoneLl.visibility=View.GONE
                 binding.codeLl.visibility=View.VISIBLE
                 Toast.makeText(this@MainActivity, "Verification Code Sent...", Toast.LENGTH_SHORT).show()
-                binding.codeSentDescriptionTv.text="Please type the verification code we send to ${binding.phoneEt.text.toString().trim()}"
+                binding.codeSentDescriptionTv.text="Please type the verification code we send to ${"+91"+binding.phoneEt.text.toString().trim()}"
             }
         }
 
         binding.phoneContinueBtn.setOnClickListener {
-            val phone=binding.phoneEt.text.toString().trim()
+            val phone= "+91"+binding.phoneEt.text.toString().trim()
             if(TextUtils.isEmpty(phone)){
                 Toast.makeText(this@MainActivity, "Please enter phone number", Toast.LENGTH_SHORT).show()
             }else{
@@ -80,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.resendCodeTv.setOnClickListener {
-            val phone=binding.phoneEt.text.toString().trim()
+            val phone= "+91"+binding.phoneEt.text.toString().trim()
             if(TextUtils.isEmpty(phone)){
                 Toast.makeText(this@MainActivity, "Please enter phone number", Toast.LENGTH_SHORT).show()
             }else{
@@ -126,16 +129,16 @@ class MainActivity : AppCompatActivity() {
         PhoneAuthProvider.verifyPhoneNumber(option)
     }
 
-    private fun verifyPhoneNumberWithCode(verificationId:String,code:String){
+    private fun verifyPhoneNumberWithCode(verificationId:String?,code:String){
         Log.d(TAG, "verifyPhoneNumberWithCode: $verificationId $code")
         progressProgressDialog.setMessage("Verifying Code...")
         progressProgressDialog.show()
 
-        val credential=PhoneAuthProvider.getCredential(verificationId,code)
-        signInWithPhoneAuthCredentials(credential)
+        val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
+        signInWithPhoneAuthCredential(credential)
     }
 
-    private fun signInWithPhoneAuthCredentials(credential: PhoneAuthCredential) {
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         progressProgressDialog.setMessage("Logging In...")
         firebaseAuth.signInWithCredential(credential)
             .addOnSuccessListener {

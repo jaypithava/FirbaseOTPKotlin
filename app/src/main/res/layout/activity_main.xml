@@ -32,6 +32,7 @@
             android:text="Phone Number"
             android:textAlignment="center"
             android:textColor="#000"
+            android:textSize="20sp"
             android:layout_marginTop="10dp"/>
 
         <TextView
@@ -54,7 +55,7 @@
             android:padding="10dp"
             android:textAlignment="center"
             android:textColor="#000"
-            android:textColorHint="@color/purple_200"/>
+            android:textColorHint="#FF5722"/>
 
         <Button
             android:id="@+id/phoneContinueBtn"
@@ -82,6 +83,7 @@
             android:text="Verification code"
             android:textAlignment="center"
             android:textColor="#000"
+            android:textSize="20sp"
             android:layout_marginTop="10dp"/>
 
         <TextView
@@ -100,12 +102,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="#fff"
-            android:hint="0000"
+            android:hint="000000"
             android:inputType="phone"
             android:padding="10dp"
             android:textAlignment="center"
             android:textColor="#000"
-            android:textColorHint="@color/purple_200"/>
+            android:textColorHint="#FF5722"/>
 
         <TextView
             android:id="@+id/resendCodeTv"
@@ -116,6 +118,7 @@
             android:text="@string/otp_resend"
             android:textAlignment="center"
             android:textColor="#777777"
+            android:textSize="15sp"
             />
 
         <Button
